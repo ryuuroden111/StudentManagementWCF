@@ -1,0 +1,5 @@
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienConsoleTest\bin\Debug\QuanLySinhVienConsoleTest.exe.config
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienConsoleTest\bin\Debug\QuanLySinhVienConsoleTest.exe
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienConsoleTest\bin\Debug\QuanLySinhVienConsoleTest.pdb
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienConsoleTest\obj\Debug\QuanLySinhVienConsoleTest.exe
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienConsoleTest\obj\Debug\QuanLySinhVienConsoleTest.pdb
