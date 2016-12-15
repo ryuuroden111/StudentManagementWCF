@@ -1,0 +1,12 @@
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\obj\Debug\QuanLySinhVienServices.csprojResolveAssemblyReference.cache
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienServices.dll.config
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienServices.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienServices.pdb
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienBDO.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienBUS.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienDAL.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienBDO.pdb
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienBUS.pdb
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\bin\Debug\QuanLySinhVienDAL.pdb
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\obj\Debug\QuanLySinhVienServices.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienServices\obj\Debug\QuanLySinhVienServices.pdb

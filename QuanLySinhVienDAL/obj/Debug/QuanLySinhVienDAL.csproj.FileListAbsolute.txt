@@ -1,0 +1,7 @@
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienDAL\obj\Debug\QuanLySinhVienDAL.csprojResolveAssemblyReference.cache
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienDAL\bin\Debug\QuanLySinhVienDAL.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienDAL\bin\Debug\QuanLySinhVienDAL.pdb
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienDAL\bin\Debug\QuanLySinhVienBDO.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienDAL\bin\Debug\QuanLySinhVienBDO.pdb
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienDAL\obj\Debug\QuanLySinhVienDAL.dll
+E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienDAL\obj\Debug\QuanLySinhVienDAL.pdb
