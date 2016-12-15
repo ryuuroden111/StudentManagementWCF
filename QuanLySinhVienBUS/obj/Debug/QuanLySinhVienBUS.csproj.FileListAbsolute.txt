@@ -1,9 +1,0 @@
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\obj\Debug\QuanLySinhVienBUS.csprojResolveAssemblyReference.cache
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\bin\Debug\QuanLySinhVienBUS.dll
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\bin\Debug\QuanLySinhVienBUS.pdb
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\bin\Debug\QuanLySinhVienBDO.dll
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\bin\Debug\QuanLySinhVienDAL.dll
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\bin\Debug\QuanLySinhVienBDO.pdb
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\bin\Debug\QuanLySinhVienDAL.pdb
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\obj\Debug\QuanLySinhVienBUS.dll
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBUS\obj\Debug\QuanLySinhVienBUS.pdb
