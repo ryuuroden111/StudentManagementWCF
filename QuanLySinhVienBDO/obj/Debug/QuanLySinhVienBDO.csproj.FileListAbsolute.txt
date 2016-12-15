@@ -1,5 +1,0 @@
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBDO\bin\Debug\QuanLySinhVienBDO.dll
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBDO\bin\Debug\QuanLySinhVienBDO.pdb
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBDO\obj\Debug\QuanLySinhVienBDO.dll
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBDO\obj\Debug\QuanLySinhVienBDO.pdb
-E:\Project Visual Studio\QuanLySinhVien\QuanLySinhVienBDO\obj\Debug\QuanLySinhVienBDO.csprojResolveAssemblyReference.cache
