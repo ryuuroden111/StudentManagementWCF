@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="KetQuaService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/QuanLySinhVienWCF.QuanLySinhVienBDO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IKetQuaService_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Add_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="detail" element="q1:Exception" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Update_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System" name="detail" element="q2:Exception" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_Delete_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System" name="detail" element="q3:Exception" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_GetKetQua_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKetQua" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_GetKetQua_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKetQuaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_GetKetQua_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System" name="detail" element="q4:Exception" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_GetAllKetQua_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllKetQua" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_GetAllKetQua_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllKetQuaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKetQuaService_GetAllKetQua_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System" name="detail" element="q5:Exception" />
+  </wsdl:message>
+  <wsdl:portType name="IKetQuaService">
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKetQuaService/Add" message="tns:IKetQuaService_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKetQuaService/AddResponse" message="tns:IKetQuaService_Add_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKetQuaService/AddExceptionFault" name="ExceptionFault" message="tns:IKetQuaService_Add_ExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKetQuaService/Update" message="tns:IKetQuaService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKetQuaService/UpdateResponse" message="tns:IKetQuaService_Update_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKetQuaService/UpdateExceptionFault" name="ExceptionFault" message="tns:IKetQuaService_Update_ExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKetQuaService/Delete" message="tns:IKetQuaService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKetQuaService/DeleteResponse" message="tns:IKetQuaService_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKetQuaService/DeleteExceptionFault" name="ExceptionFault" message="tns:IKetQuaService_Delete_ExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKetQua">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKetQuaService/GetKetQua" message="tns:IKetQuaService_GetKetQua_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKetQuaService/GetKetQuaResponse" message="tns:IKetQuaService_GetKetQua_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKetQuaService/GetKetQuaExceptionFault" name="ExceptionFault" message="tns:IKetQuaService_GetKetQua_ExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllKetQua">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKetQuaService/GetAllKetQua" message="tns:IKetQuaService_GetAllKetQua_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKetQuaService/GetAllKetQuaResponse" message="tns:IKetQuaService_GetAllKetQua_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKetQuaService/GetAllKetQuaExceptionFault" name="ExceptionFault" message="tns:IKetQuaService_GetAllKetQua_ExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IKetQuaService" type="tns:IKetQuaService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/IKetQuaService/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IKetQuaService/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IKetQuaService/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetKetQua">
+      <soap:operation soapAction="http://tempuri.org/IKetQuaService/GetKetQua" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllKetQua">
+      <soap:operation soapAction="http://tempuri.org/IKetQuaService/GetAllKetQua" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KetQuaService">
+    <wsdl:port name="BasicHttpBinding_IKetQuaService" binding="tns:BasicHttpBinding_IKetQuaService">
+      <soap:address location="http://localhost:8080/QuanLySinhVienWCF/QuanLySinhVienServices/KetQuaService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
