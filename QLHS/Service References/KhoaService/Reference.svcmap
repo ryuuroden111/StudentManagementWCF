@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="803cb5ed-3731-4103-b3a9-1a2d91a5cf93" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/QuanLySinhVienWCF/QuanLySinhVienServices/KhoaService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="a9e2f98d-9fab-4999-8709-b7b97ff5591c" SourceId="1" SourceUrl="http://localhost:8080/QuanLySinhVienWCF/QuanLySinhVienServices/KhoaService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="1f353b37-4032-4ad9-99e3-d690e4cd9ce7" SourceId="1" SourceUrl="http://localhost:8080/QuanLySinhVienWCF/QuanLySinhVienServices/KhoaService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e3d1a6c0-85b2-4eb7-8b44-f7cab720d376" SourceId="1" SourceUrl="http://localhost:8080/QuanLySinhVienWCF/QuanLySinhVienServices/KhoaService/mex" />
+    <MetadataFile FileName="QuanLySinhVienWCF.QuanLySinhVienBDO.xsd" MetadataType="Schema" ID="145deba0-64a1-4f52-84c7-aee7f6c5ae54" SourceId="1" SourceUrl="http://localhost:8080/QuanLySinhVienWCF/QuanLySinhVienServices/KhoaService/mex" />
+    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="6d4305f6-70b5-4ba3-b72d-baffe87b0fe4" SourceId="1" SourceUrl="http://localhost:8080/QuanLySinhVienWCF/QuanLySinhVienServices/KhoaService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

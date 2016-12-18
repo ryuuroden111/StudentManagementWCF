@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F32FA7A-91D0-42F8-8681-F5942972EC8E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QLHS</RootNamespace>
+    <AssemblyName>QLHS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v15.2" />
+    <Reference Include="DevExpress.Data.v15.2" />
+    <Reference Include="DevExpress.DataAccess.v15.2, Version=15.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v15.2.Core" />
+    <Reference Include="DevExpress.Utils.v15.2" />
+    <Reference Include="DevExpress.Xpo.v15.2, Version=15.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v15.2" />
+    <Reference Include="DevExpress.Sparkline.v15.2.Core" />
+    <Reference Include="DevExpress.XtraEditors.v15.2" />
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Login.Designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\KetQuaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\KhoaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MonHocService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SinhVienService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="uc_QLKetQua.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_QLKetQua.Designer.cs">
+      <DependentUpon>uc_QLKetQua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc_QLKhoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_QLKhoa.Designer.cs">
+      <DependentUpon>uc_QLKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc_QLMonHoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_QLMonHoc.Designer.cs">
+      <DependentUpon>uc_QLMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc_QLSinhVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_QLSinhVien.Designer.cs">
+      <DependentUpon>uc_QLSinhVien.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="uc_QLKetQua.resx">
+      <DependentUpon>uc_QLKetQua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc_QLKhoa.resx">
+      <DependentUpon>uc_QLKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc_QLMonHoc.resx">
+      <DependentUpon>uc_QLMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc_QLSinhVien.resx">
+      <DependentUpon>uc_QLSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\KetQuaService\QLHS.KetQuaService.KetQuaBDO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KetQuaService\QuanLySinhVienWCF.QuanLySinhVienBDO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KetQuaService\service.wsdl" />
+    <None Include="Service References\KetQuaService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KetQuaService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KetQuaService\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KhoaService\QLHS.KhoaService.KhoaBDO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KhoaService\QuanLySinhVienWCF.QuanLySinhVienBDO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KhoaService\service.wsdl" />
+    <None Include="Service References\KhoaService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KhoaService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KhoaService\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonHocService\QLHS.MonHocService.MonHocBDO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MonHocService\QuanLySinhVienWCF.QuanLySinhVienBDO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonHocService\service.wsdl" />
+    <None Include="Service References\MonHocService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonHocService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonHocService\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SinhVienService\QLHS.SinhVienService.SinhVienBDO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SinhVienService\QuanLySinhVienWCF.QuanLySinhVienBDO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SinhVienService\service.wsdl" />
+    <None Include="Service References\SinhVienService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SinhVienService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SinhVienService\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usergroup_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usergroup_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usergroup_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bopivotchart_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dangnhap1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dangnhap2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thoat1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thoat2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\KetQuaService\" />
+    <WCFMetadataStorage Include="Service References\KhoaService\" />
+    <WCFMetadataStorage Include="Service References\MonHocService\" />
+    <WCFMetadataStorage Include="Service References\SinhVienService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KhoaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KhoaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KhoaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\savepagesetup_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MonHocService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MonHocService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MonHocService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SinhVienService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SinhVienService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SinhVienService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KetQuaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KetQuaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KetQuaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
