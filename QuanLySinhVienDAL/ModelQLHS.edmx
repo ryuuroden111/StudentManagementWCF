@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLSVModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="QLSVModelStoreContainer">
+          <EntitySet Name="KetQua" EntityType="QLSVModel.Store.KetQua" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Khoa" EntityType="QLSVModel.Store.Khoa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MonHoc" EntityType="QLSVModel.Store.MonHoc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sinhvien" EntityType="QLSVModel.Store.Sinhvien" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ketqua_Mamh" Association="QLSVModel.Store.FK_ketqua_Mamh">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="KetQua" EntitySet="KetQua" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ketqua_Masv" Association="QLSVModel.Store.FK_ketqua_Masv">
+            <End Role="Sinhvien" EntitySet="Sinhvien" />
+            <End Role="KetQua" EntitySet="KetQua" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sinh_Vien_Makh" Association="QLSVModel.Store.FK_Sinh_Vien_Makh">
+            <End Role="Khoa" EntitySet="Khoa" />
+            <End Role="Sinhvien" EntitySet="Sinhvien" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="KetQua">
+          <Key>
+            <PropertyRef Name="masv" />
+            <PropertyRef Name="Mamh" />
+          </Key>
+          <Property Name="masv" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="Mamh" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="Diem" Type="real" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="Makhoa" />
+          </Key>
+          <Property Name="Makhoa" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="Tenkhoa" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="Mamh" />
+          </Key>
+          <Property Name="Mamh" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="Tenmh" Type="nvarchar" MaxLength="50" />
+          <Property Name="sotiet" Type="int" />
+        </EntityType>
+        <EntityType Name="Sinhvien">
+          <Key>
+            <PropertyRef Name="Masv" />
+          </Key>
+          <Property Name="Masv" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="Hosv" Type="nvarchar" MaxLength="50" />
+          <Property Name="tensv" Type="nvarchar" MaxLength="50" />
+          <Property Name="phai" Type="bit" />
+          <Property Name="ngaysinh" Type="datetime" />
+          <Property Name="noisinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="Makhoa" Type="char" MaxLength="2" />
+          <Property Name="Hocbong" Type="int" />
+        </EntityType>
+        <Association Name="FK_ketqua_Mamh">
+          <End Role="MonHoc" Type="QLSVModel.Store.MonHoc" Multiplicity="1" />
+          <End Role="KetQua" Type="QLSVModel.Store.KetQua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="Mamh" />
+            </Principal>
+            <Dependent Role="KetQua">
+              <PropertyRef Name="Mamh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ketqua_Masv">
+          <End Role="Sinhvien" Type="QLSVModel.Store.Sinhvien" Multiplicity="1" />
+          <End Role="KetQua" Type="QLSVModel.Store.KetQua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sinhvien">
+              <PropertyRef Name="Masv" />
+            </Principal>
+            <Dependent Role="KetQua">
+              <PropertyRef Name="masv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sinh_Vien_Makh">
+          <End Role="Khoa" Type="QLSVModel.Store.Khoa" Multiplicity="0..1" />
+          <End Role="Sinhvien" Type="QLSVModel.Store.Sinhvien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="Makhoa" />
+            </Principal>
+            <Dependent Role="Sinhvien">
+              <PropertyRef Name="Makhoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spEditKetQua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatementType" Type="nvarchar" Mode="In" />
+          <Parameter Name="masv" Type="char" Mode="In" />
+          <Parameter Name="Mamh" Type="char" Mode="In" />
+          <Parameter Name="Diem" Type="real" Mode="In" />
+        </Function>
+        <Function Name="spEditKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatementType" Type="nvarchar" Mode="In" />
+          <Parameter Name="Makhoa" Type="char" Mode="In" />
+          <Parameter Name="Tenkhoa" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spEditMonHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatementType" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mamh" Type="char" Mode="In" />
+          <Parameter Name="Tenmh" Type="nvarchar" Mode="In" />
+          <Parameter Name="sotiet" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEditSinhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatementType" Type="nvarchar" Mode="In" />
+          <Parameter Name="Masv" Type="char" Mode="In" />
+          <Parameter Name="Hosv" Type="nvarchar" Mode="In" />
+          <Parameter Name="tensv" Type="nvarchar" Mode="In" />
+          <Parameter Name="phai" Type="bit" Mode="In" />
+          <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
+          <Parameter Name="noisinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaKhoa" Type="char" Mode="In" />
+          <Parameter Name="Hocbong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetKetQua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Masv" Type="char" Mode="In" />
+          <Parameter Name="Mamh" Type="char" Mode="In" />
+          <Parameter Name="ThongTinKhac" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spGetKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Makhoa" Type="char" Mode="In" />
+          <Parameter Name="ThongTinKhac" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spGetMonHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mamh" Type="char" Mode="In" />
+          <Parameter Name="ThongTinKhac" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spGetSinhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Masv" Type="char" Mode="In" />
+          <Parameter Name="ThongTinKhac" Type="nvarchar" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLSVModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QLSVEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="KetQuas" EntityType="QLSVModel.KetQua" />
+          <EntitySet Name="Khoas" EntityType="QLSVModel.Khoa" />
+          <EntitySet Name="MonHocs" EntityType="QLSVModel.MonHoc" />
+          <EntitySet Name="Sinhviens" EntityType="QLSVModel.Sinhvien" />
+          <AssociationSet Name="FK_ketqua_Mamh" Association="QLSVModel.FK_ketqua_Mamh">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="KetQua" EntitySet="KetQuas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ketqua_Masv" Association="QLSVModel.FK_ketqua_Masv">
+            <End Role="Sinhvien" EntitySet="Sinhviens" />
+            <End Role="KetQua" EntitySet="KetQuas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sinh_Vien_Makh" Association="QLSVModel.FK_Sinh_Vien_Makh">
+            <End Role="Khoa" EntitySet="Khoas" />
+            <End Role="Sinhvien" EntitySet="Sinhviens" />
+          </AssociationSet>
+          <FunctionImport Name="spEditKetQua">
+            <Parameter Name="StatementType" Mode="In" Type="String" />
+            <Parameter Name="masv" Mode="In" Type="String" />
+            <Parameter Name="Mamh" Mode="In" Type="String" />
+            <Parameter Name="Diem" Mode="In" Type="Single" />
+          </FunctionImport>
+          <FunctionImport Name="spEditKhoa">
+            <Parameter Name="StatementType" Mode="In" Type="String" />
+            <Parameter Name="Makhoa" Mode="In" Type="String" />
+            <Parameter Name="Tenkhoa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spEditMonHoc">
+            <Parameter Name="StatementType" Mode="In" Type="String" />
+            <Parameter Name="Mamh" Mode="In" Type="String" />
+            <Parameter Name="Tenmh" Mode="In" Type="String" />
+            <Parameter Name="sotiet" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEditSinhVien">
+            <Parameter Name="StatementType" Mode="In" Type="String" />
+            <Parameter Name="Masv" Mode="In" Type="String" />
+            <Parameter Name="Hosv" Mode="In" Type="String" />
+            <Parameter Name="tensv" Mode="In" Type="String" />
+            <Parameter Name="phai" Mode="In" Type="Boolean" />
+            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+            <Parameter Name="noisinh" Mode="In" Type="String" />
+            <Parameter Name="MaKhoa" Mode="In" Type="String" />
+            <Parameter Name="Hocbong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetKetQua" ReturnType="Collection(QLSVModel.spGetKetQua_Result)">
+            <Parameter Name="Masv" Mode="In" Type="String" />
+            <Parameter Name="Mamh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinKhac" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetKhoa" ReturnType="Collection(QLSVModel.spGetKhoa_Result)">
+            <Parameter Name="Makhoa" Mode="In" Type="String" />
+            <Parameter Name="ThongTinKhac" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetMonHoc" ReturnType="Collection(QLSVModel.spGetMonHoc_Result)">
+            <Parameter Name="Mamh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinKhac" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetSinhVien" ReturnType="Collection(QLSVModel.spGetSinhVien_Result)">
+            <Parameter Name="Masv" Mode="In" Type="String" />
+            <Parameter Name="ThongTinKhac" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="KetQua">
+          <Key>
+            <PropertyRef Name="masv" />
+            <PropertyRef Name="Mamh" />
+          </Key>
+          <Property Name="masv" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="Mamh" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Diem" Type="Single" />
+          <NavigationProperty Name="MonHoc" Relationship="QLSVModel.FK_ketqua_Mamh" FromRole="KetQua" ToRole="MonHoc" />
+          <NavigationProperty Name="Sinhvien" Relationship="QLSVModel.FK_ketqua_Masv" FromRole="KetQua" ToRole="Sinhvien" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="Makhoa" />
+          </Key>
+          <Property Name="Makhoa" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Tenkhoa" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Sinhviens" Relationship="QLSVModel.FK_Sinh_Vien_Makh" FromRole="Khoa" ToRole="Sinhvien" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="Mamh" />
+          </Key>
+          <Property Name="Mamh" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Tenmh" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="sotiet" Type="Int32" />
+          <NavigationProperty Name="KetQuas" Relationship="QLSVModel.FK_ketqua_Mamh" FromRole="MonHoc" ToRole="KetQua" />
+        </EntityType>
+        <EntityType Name="Sinhvien">
+          <Key>
+            <PropertyRef Name="Masv" />
+          </Key>
+          <Property Name="Masv" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="Hosv" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="tensv" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="phai" Type="Boolean" />
+          <Property Name="ngaysinh" Type="DateTime" Precision="3" />
+          <Property Name="noisinh" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Makhoa" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Hocbong" Type="Int32" />
+          <NavigationProperty Name="KetQuas" Relationship="QLSVModel.FK_ketqua_Masv" FromRole="Sinhvien" ToRole="KetQua" />
+          <NavigationProperty Name="Khoa" Relationship="QLSVModel.FK_Sinh_Vien_Makh" FromRole="Sinhvien" ToRole="Khoa" />
+        </EntityType>
+        <Association Name="FK_ketqua_Mamh">
+          <End Role="MonHoc" Type="QLSVModel.MonHoc" Multiplicity="1" />
+          <End Role="KetQua" Type="QLSVModel.KetQua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="Mamh" />
+            </Principal>
+            <Dependent Role="KetQua">
+              <PropertyRef Name="Mamh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ketqua_Masv">
+          <End Role="Sinhvien" Type="QLSVModel.Sinhvien" Multiplicity="1" />
+          <End Role="KetQua" Type="QLSVModel.KetQua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sinhvien">
+              <PropertyRef Name="Masv" />
+            </Principal>
+            <Dependent Role="KetQua">
+              <PropertyRef Name="masv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sinh_Vien_Makh">
+          <End Role="Khoa" Type="QLSVModel.Khoa" Multiplicity="0..1" />
+          <End Role="Sinhvien" Type="QLSVModel.Sinhvien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="Makhoa" />
+            </Principal>
+            <Dependent Role="Sinhvien">
+              <PropertyRef Name="Makhoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spGetKetQua_Result">
+          <Property Type="String" Name="masv" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="Mamh" Nullable="false" MaxLength="2" />
+          <Property Type="Single" Name="Diem" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetKhoa_Result">
+          <Property Type="String" Name="Makhoa" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Tenkhoa" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetMonHoc_Result">
+          <Property Type="String" Name="Mamh" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Tenmh" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="sotiet" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetSinhVien_Result">
+          <Property Type="String" Name="Masv" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="Hosv" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="tensv" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="phai" Nullable="true" />
+          <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="noisinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Makhoa" Nullable="true" MaxLength="2" />
+          <Property Type="Int32" Name="Hocbong" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLSVModelStoreContainer" CdmEntityContainer="QLSVEntities">
+          <EntitySetMapping Name="KetQuas">
+            <EntityTypeMapping TypeName="QLSVModel.KetQua">
+              <MappingFragment StoreEntitySet="KetQua">
+                <ScalarProperty Name="masv" ColumnName="masv" />
+                <ScalarProperty Name="Mamh" ColumnName="Mamh" />
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khoas">
+            <EntityTypeMapping TypeName="QLSVModel.Khoa">
+              <MappingFragment StoreEntitySet="Khoa">
+                <ScalarProperty Name="Makhoa" ColumnName="Makhoa" />
+                <ScalarProperty Name="Tenkhoa" ColumnName="Tenkhoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="QLSVModel.MonHoc">
+              <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="Mamh" ColumnName="Mamh" />
+                <ScalarProperty Name="Tenmh" ColumnName="Tenmh" />
+                <ScalarProperty Name="sotiet" ColumnName="sotiet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sinhviens">
+            <EntityTypeMapping TypeName="QLSVModel.Sinhvien">
+              <MappingFragment StoreEntitySet="Sinhvien">
+                <ScalarProperty Name="Masv" ColumnName="Masv" />
+                <ScalarProperty Name="Hosv" ColumnName="Hosv" />
+                <ScalarProperty Name="tensv" ColumnName="tensv" />
+                <ScalarProperty Name="phai" ColumnName="phai" />
+                <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+                <ScalarProperty Name="noisinh" ColumnName="noisinh" />
+                <ScalarProperty Name="Makhoa" ColumnName="Makhoa" />
+                <ScalarProperty Name="Hocbong" ColumnName="Hocbong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spEditKetQua" FunctionName="QLSVModel.Store.spEditKetQua" />
+          <FunctionImportMapping FunctionImportName="spEditKhoa" FunctionName="QLSVModel.Store.spEditKhoa" />
+          <FunctionImportMapping FunctionImportName="spEditMonHoc" FunctionName="QLSVModel.Store.spEditMonHoc" />
+          <FunctionImportMapping FunctionImportName="spEditSinhVien" FunctionName="QLSVModel.Store.spEditSinhVien" />
+          <FunctionImportMapping FunctionImportName="spGetKetQua" FunctionName="QLSVModel.Store.spGetKetQua">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSVModel.spGetKetQua_Result">
+                <ScalarProperty Name="masv" ColumnName="masv" />
+                <ScalarProperty Name="Mamh" ColumnName="Mamh" />
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetKhoa" FunctionName="QLSVModel.Store.spGetKhoa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSVModel.spGetKhoa_Result">
+                <ScalarProperty Name="Makhoa" ColumnName="Makhoa" />
+                <ScalarProperty Name="Tenkhoa" ColumnName="Tenkhoa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetMonHoc" FunctionName="QLSVModel.Store.spGetMonHoc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSVModel.spGetMonHoc_Result">
+                <ScalarProperty Name="Mamh" ColumnName="Mamh" />
+                <ScalarProperty Name="Tenmh" ColumnName="Tenmh" />
+                <ScalarProperty Name="sotiet" ColumnName="sotiet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetSinhVien" FunctionName="QLSVModel.Store.spGetSinhVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSVModel.spGetSinhVien_Result">
+                <ScalarProperty Name="Masv" ColumnName="Masv" />
+                <ScalarProperty Name="Hosv" ColumnName="Hosv" />
+                <ScalarProperty Name="tensv" ColumnName="tensv" />
+                <ScalarProperty Name="phai" ColumnName="phai" />
+                <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+                <ScalarProperty Name="noisinh" ColumnName="noisinh" />
+                <ScalarProperty Name="Makhoa" ColumnName="Makhoa" />
+                <ScalarProperty Name="Hocbong" ColumnName="Hocbong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

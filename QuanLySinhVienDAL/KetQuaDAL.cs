@@ -15,88 +15,102 @@ namespace QuanLySinhVienWCF
     {
         public class KetQuaDAL
         {
+            QLSVEntities db = new QLSVEntities();
             public int Add(KetQuaBDO KetQua)
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("spEditKetQua", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@StatementType", ConnectionInformation.Insert);
-                        command.Parameters.AddWithValue("@masv", KetQua.MaSV);
-                        command.Parameters.AddWithValue("@Mamh", KetQua.MaMH);
-                        command.Parameters.AddWithValue("@Diem", KetQua.Diem);
-                        connection.Open();
-                        return command.ExecuteNonQuery();
-                    }
-                }
+                return db.spEditKetQua(ConnectionInformation.Insert, KetQua.MaSV, KetQua.MaMH, KetQua.Diem);
+                //using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                //{
+                //    using (SqlCommand command = new SqlCommand("spEditKetQua", connection))
+                //    {
+                //        command.CommandType = CommandType.StoredProcedure;
+                //        command.Parameters.AddWithValue("@StatementType", ConnectionInformation.Insert);
+                //        command.Parameters.AddWithValue("@masv", KetQua.MaSV);
+                //        command.Parameters.AddWithValue("@Mamh", KetQua.MaMH);
+                //        command.Parameters.AddWithValue("@Diem", KetQua.Diem);
+                //        connection.Open();
+                //        return command.ExecuteNonQuery();
+                //    }
+                //}
             }
 
             public int Update(KetQuaBDO KetQua)
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("spEditKetQua", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@StatementType", ConnectionInformation.Update);
-                        command.Parameters.AddWithValue("@masv", KetQua.MaSV);
-                        command.Parameters.AddWithValue("@Mamh", KetQua.MaMH);
-                        command.Parameters.AddWithValue("@Diem", KetQua.Diem);
+                return db.spEditKetQua(ConnectionInformation.Update, KetQua.MaSV, KetQua.MaMH, KetQua.Diem);
+                //using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                //{
+                //    using (SqlCommand command = new SqlCommand("spEditKetQua", connection))
+                //    {
+                //        command.CommandType = CommandType.StoredProcedure;
+                //        command.Parameters.AddWithValue("@StatementType", ConnectionInformation.Update);
+                //        command.Parameters.AddWithValue("@masv", KetQua.MaSV);
+                //        command.Parameters.AddWithValue("@Mamh", KetQua.MaMH);
+                //        command.Parameters.AddWithValue("@Diem", KetQua.Diem);
 
-                        connection.Open();
-                        return command.ExecuteNonQuery();
-                    }
-                }
+                //        connection.Open();
+                //        return command.ExecuteNonQuery();
+                //    }
+                //}
             }
 
             public int Delete(string MaSV, string MaMH)
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("spEditKetQua", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@StatementType", ConnectionInformation.Delete);
-                        command.Parameters.AddWithValue("@masv", MaSV);
-                        command.Parameters.AddWithValue("@Mamh", MaMH);
+                return db.spEditKetQua(ConnectionInformation.Delete, MaSV, MaMH, null);
+                //using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                //{
+                //    using (SqlCommand command = new SqlCommand("spEditKetQua", connection))
+                //    {
+                //        command.CommandType = CommandType.StoredProcedure;
+                //        command.Parameters.AddWithValue("@StatementType", ConnectionInformation.Delete);
+                //        command.Parameters.AddWithValue("@masv", MaSV);
+                //        command.Parameters.AddWithValue("@Mamh", MaMH);
 
-                        connection.Open();
-                        return command.ExecuteNonQuery();
-                    }
-                }
+                //        connection.Open();
+                //        return command.ExecuteNonQuery();
+                //    }
+                //}
             }
 
             public List<KetQuaBDO> GetKetQuaByMaSV(string MaSV)
             {
                 List<KetQuaBDO> ListKetQua = new List<KetQuaBDO>();
-
-                using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                var listketqua = db.spGetKetQua(MaSV, "", "");
+                foreach (spGetKetQua_Result kq in listketqua)
                 {
-                    using (SqlCommand command = new SqlCommand("spGetKetQua", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@Masv", MaSV);
+                    KetQuaBDO KetQua = new KetQuaBDO();
+                    KetQua.MaSV = kq.masv;
+                    KetQua.MaMH = kq.Mamh;
+                    KetQua.Diem = kq.Diem.Value;
 
-                        connection.Open();
-                        SqlDataAdapter KetQuaAdapter = new SqlDataAdapter();
-                        DataTable KetQuaTable = new DataTable();
-                        KetQuaAdapter.SelectCommand = command;
-                        KetQuaAdapter.Fill(KetQuaTable);
-                        if (KetQuaTable.Rows.Count > 0)
-                        {
-                            for (int i = 0; i < KetQuaTable.Rows.Count; i++)
-                            {
-                                KetQuaBDO KetQua = new KetQuaBDO();
-                                KetQua.MaSV = (string)KetQuaTable.Rows[i]["masv"];
-                                KetQua.MaMH = (string)KetQuaTable.Rows[i]["Mamh"];
-                                KetQua.Diem = (int)KetQuaTable.Rows[i]["Diem"];
-
-                                ListKetQua.Add(KetQua);
-                            }
-                        }
-                    }
+                    ListKetQua.Add(KetQua);
                 }
+                //
+                //using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                //{
+                //    using (SqlCommand command = new SqlCommand("spGetKetQua", connection))
+                //    {
+                //        command.CommandType = CommandType.StoredProcedure;
+                //        command.Parameters.AddWithValue("@Masv", MaSV);
+
+                //        connection.Open();
+                //        SqlDataAdapter KetQuaAdapter = new SqlDataAdapter();
+                //        DataTable KetQuaTable = new DataTable();
+                //        KetQuaAdapter.SelectCommand = command;
+                //        KetQuaAdapter.Fill(KetQuaTable);
+                //        if (KetQuaTable.Rows.Count > 0)
+                //        {
+                //            for (int i = 0; i < KetQuaTable.Rows.Count; i++)
+                //            {
+                //                KetQuaBDO KetQua = new KetQuaBDO();
+                //                KetQua.MaSV = (string)KetQuaTable.Rows[i]["masv"];
+                //                KetQua.MaMH = (string)KetQuaTable.Rows[i]["Mamh"];
+                //                KetQua.Diem = (int)KetQuaTable.Rows[i]["Diem"];
+
+                //                ListKetQua.Add(KetQua);
+                //            }
+                //        }
+                //    }
+                //}
 
                 return ListKetQua;
             }
@@ -104,33 +118,42 @@ namespace QuanLySinhVienWCF
             public List<KetQuaBDO> GetKetQuaByMaMH(string MaMH)
             {
                 List<KetQuaBDO> ListKetQua = new List<KetQuaBDO>();
-
-                using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                var listketqua = db.spGetKetQua("", MaMH, "");
+                foreach (spGetKetQua_Result kq in listketqua)
                 {
-                    using (SqlCommand command = new SqlCommand("spGetKetQua", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@Mamh", MaMH);
+                    KetQuaBDO KetQua = new KetQuaBDO();
+                    KetQua.MaSV = kq.masv;
+                    KetQua.MaMH = kq.Mamh;
+                    KetQua.Diem = kq.Diem.Value;
 
-                        connection.Open();
-                        SqlDataAdapter KetQuaAdapter = new SqlDataAdapter();
-                        DataTable KetQuaTable = new DataTable();
-                        KetQuaAdapter.SelectCommand = command;
-                        KetQuaAdapter.Fill(KetQuaTable);
-                        if (KetQuaTable.Rows.Count > 0)
-                        {
-                            for (int i = 0; i < KetQuaTable.Rows.Count; i++)
-                            {
-                                KetQuaBDO KetQua = new KetQuaBDO();
-                                KetQua.MaSV = (string)KetQuaTable.Rows[i]["masv"];
-                                KetQua.MaMH = (string)KetQuaTable.Rows[i]["Mamh"];
-                                KetQua.Diem = (float)KetQuaTable.Rows[i]["Diem"];
-
-                                ListKetQua.Add(KetQua);
-                            }
-                        }
-                    }
+                    ListKetQua.Add(KetQua);
                 }
+                //using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                //{
+                //    using (SqlCommand command = new SqlCommand("spGetKetQua", connection))
+                //    {
+                //        command.CommandType = CommandType.StoredProcedure;
+                //        command.Parameters.AddWithValue("@Mamh", MaMH);
+
+                //        connection.Open();
+                //        SqlDataAdapter KetQuaAdapter = new SqlDataAdapter();
+                //        DataTable KetQuaTable = new DataTable();
+                //        KetQuaAdapter.SelectCommand = command;
+                //        KetQuaAdapter.Fill(KetQuaTable);
+                //        if (KetQuaTable.Rows.Count > 0)
+                //        {
+                //            for (int i = 0; i < KetQuaTable.Rows.Count; i++)
+                //            {
+                //                KetQuaBDO KetQua = new KetQuaBDO();
+                //                KetQua.MaSV = (string)KetQuaTable.Rows[i]["masv"];
+                //                KetQua.MaMH = (string)KetQuaTable.Rows[i]["Mamh"];
+                //                KetQua.Diem = (float)KetQuaTable.Rows[i]["Diem"];
+
+                //                ListKetQua.Add(KetQua);
+                //            }
+                //        }
+                //    }
+                //}
 
                 return ListKetQua;
             }
@@ -138,31 +161,41 @@ namespace QuanLySinhVienWCF
             public List<KetQuaBDO> GetAllKetQua()
             {
                 List<KetQuaBDO> ListKetQua = new List<KetQuaBDO>();
-
-                using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                QLSVEntities db = new QLSVEntities();
+                var listketqua = db.spGetKetQua("", "", "");
+                foreach (spGetKetQua_Result kq in listketqua)
                 {
-                    using (SqlCommand command = new SqlCommand("spGetKetQua", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        connection.Open();
-                        SqlDataAdapter KetQuaAdapter = new SqlDataAdapter();
-                        DataTable KetQuaTable = new DataTable();
-                        KetQuaAdapter.SelectCommand = command;
-                        KetQuaAdapter.Fill(KetQuaTable);
-                        if (KetQuaTable.Rows.Count > 0)
-                        {
-                            for (int i = 0; i < KetQuaTable.Rows.Count; i++)
-                            {
-                                KetQuaBDO KetQua = new KetQuaBDO();
-                                KetQua.MaSV = (string)KetQuaTable.Rows[i]["masv"];
-                                KetQua.MaMH = (string)KetQuaTable.Rows[i]["Mamh"];
-                                KetQua.Diem = (float)KetQuaTable.Rows[i]["Diem"];
+                    KetQuaBDO KetQua = new KetQuaBDO();
+                    KetQua.MaSV = kq.masv;
+                    KetQua.MaMH = kq.Mamh;
+                    KetQua.Diem = kq.Diem.Value;
 
-                                ListKetQua.Add(KetQua);
-                            }
-                        }
-                    }
+                    ListKetQua.Add(KetQua);
                 }
+                //using (SqlConnection connection = new SqlConnection(ConnectionInformation.ConnectionString))
+                //{
+                //    using (SqlCommand command = new SqlCommand("spGetKetQua", connection))
+                //    {
+                //        command.CommandType = CommandType.StoredProcedure;
+                //        connection.Open();
+                //        SqlDataAdapter KetQuaAdapter = new SqlDataAdapter();
+                //        DataTable KetQuaTable = new DataTable();
+                //        KetQuaAdapter.SelectCommand = command;
+                //        KetQuaAdapter.Fill(KetQuaTable);
+                //        if (KetQuaTable.Rows.Count > 0)
+                //        {
+                //            for (int i = 0; i < KetQuaTable.Rows.Count; i++)
+                //            {
+                //                KetQuaBDO KetQua = new KetQuaBDO();
+                //                KetQua.MaSV = (string)KetQuaTable.Rows[i]["masv"];
+                //                KetQua.MaMH = (string)KetQuaTable.Rows[i]["Mamh"];
+                //                KetQua.Diem = (float)KetQuaTable.Rows[i]["Diem"];
+
+                //                ListKetQua.Add(KetQua);
+                //            }
+                //        }
+                //    }
+                //}
                 return ListKetQua;
             }
         }

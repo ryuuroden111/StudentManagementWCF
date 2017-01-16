@@ -33,9 +33,21 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,17 +57,86 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionInformation.cs" />
+    <Compile Include="KetQua.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
     <Compile Include="KetQuaDAL.cs" />
+    <Compile Include="Khoa.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
     <Compile Include="KhoaDAL.cs" />
+    <Compile Include="ModelQLHS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelQLHS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelQLHS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelQLHS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelQLHS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MonHoc.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
     <Compile Include="MonHocDAL.cs" />
+    <Compile Include="Sinhvien.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
     <Compile Include="SinhVienDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="spGetKetQua_Result.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetKhoa_Result.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetMonHoc_Result.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetSinhVien_Result.cs">
+      <DependentUpon>ModelQLHS.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QuanLySinhVienBDO\QuanLySinhVienBDO.csproj">
       <Project>{b27a9a6a-6623-4bc0-a582-eb255b566b77}</Project>
       <Name>QuanLySinhVienBDO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ModelQLHS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelQLHS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ModelQLHS.edmx.diagram">
+      <DependentUpon>ModelQLHS.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelQLHS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelQLHS.edmx</DependentUpon>
+      <LastGenOutput>ModelQLHS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelQLHS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelQLHS.edmx</DependentUpon>
+      <LastGenOutput>ModelQLHS.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
